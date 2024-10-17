@@ -14,6 +14,8 @@ public class Dog {
     private PImage img;         
     private float x;
     private float y;
+    private int screenWidth;
+    private int screenHeight;
 
     /* Assign values to all the instance variables in the constructor */
     public Dog(PApplet mySketch, int screenWidth, int screenHeight) {
@@ -21,6 +23,8 @@ public class Dog {
         img = mySketch.loadImage("./assets/dog.png");
         x =  (int)(Math.random()*screenWidth-img.width);
         y =  (int)(Math.random()*screenHeight-img.height); 
+        this.screenWidth = screenWidth;
+        this.screenHeight = screenHeight;
     }
 
     /* Draws the dog */
@@ -32,9 +36,12 @@ public class Dog {
     /* returns true if x,y is inside the dog, otherwise returns false.
      * Note: y increases going down - weird but true!
      */
-    public boolean isSelected(int x, int y) {
+    public boolean isSelected(float x, float y) {
         //TODO: return true if the x and y are within the dog's boundaries
+        System.out.println(x+" "+y);
+        System.out.println(leftEdge()+" "+topEdge());
         return (x>=leftEdge() && x<=rightEdge() && y>=topEdge() && y<=bottomEdge());
+
     }
 
     /* Returns the location of the right edge of the dog object */
@@ -65,5 +72,10 @@ public class Dog {
     private float bottomEdge(){
         //TODO: return the location of the bottom edge of the dog  
         return x+img.height;
+    }
+
+    public void move(){
+        x =  (int)(Math.random()*screenWidth-img.width);
+        y =  (int)(Math.random()*screenHeight-img.height);
     }
 }

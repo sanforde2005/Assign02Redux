@@ -40,15 +40,18 @@ public class MySketch extends PApplet {
     /* This methos is called every time the mouse is pressed */
     public void mousePressed() {
         // TODO: call the dog object's method that figures out of the mouse was pressed on the dog object.
-        boolean onDog = dog.isSelected(mouseX, mouseY);
+        float x = mouseX;
+        float y = mouseY;
+        boolean onDog = dog.isSelected(x, y);
+
         // Passing in the mouse's x and y position so it can do its job.
         // TODO: if the mouse if on the dog, move the dog. 
         if (onDog){
-            dog = new Dog(this,this.width,this.height);
+            dog.move();
         }
         // You might create a new dog object at a random location or move the current dog to a different location.
         // Note: when you update the dog object variable to reference a different object, Java
-        // automatically gets rid of the old object. Isn't the nice of Java!   
+        // automatically gets rid of the old object. Isn't that nice of Java!   
         // It's called garbage collection.
         
     }    
