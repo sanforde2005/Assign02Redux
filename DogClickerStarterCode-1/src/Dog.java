@@ -12,8 +12,8 @@ public class Dog {
 
     private PApplet mySketch; 
     private PImage img;         
-    private float x;
-    private float y;
+    public float x;
+    public float y;
     private int screenWidth;
     private int screenHeight;
 
@@ -32,36 +32,24 @@ public class Dog {
         mySketch.image(img,x,y);
     }
 
-    /* Test to see of the x and y location parameters are inside the dog's boundaries */
-    /* returns true if x,y is inside the dog, otherwise returns false.
-     * Note: y increases going down - weird but true!
-     */
-    public boolean isSelected(float x, float y) {
-        //TODO: return true if the x and y are within the dog's boundaries
-        System.out.println(x+" "+y);
-        System.out.println(leftEdge()+" "+topEdge());
-        return (x>=leftEdge() && x<=rightEdge() && y>=topEdge() && y<=bottomEdge());
-
-    }
-
     /* Returns the location of the right edge of the dog object */
     /* Call this is your isSelected method to tell you the right edge of the dog.
      * To find the width of the image, use "theNameOfYourPImageVariable.width"
      */
-    private float rightEdge(){
+    public float rightEdge(){
         //TODO: return the location of the right edge of the dog
         return x+img.width;
     }
     /* Returns the location of the left edge of the dog object */
     /* Call this is your isSelected method to tell you the left edge of the dog */
-    private float leftEdge(){
+    public float leftEdge(){
         //TODO: return the location of the left edge of the dog
         return x;
         
     }
     /* Returns the location of the top edge of the dog object */
     /* Call this is your isSelected method to tell you the top edge of the dog. */
-    private float topEdge(){
+    public float topEdge(){
         //TODO: return the location of the top edge of the dog   
         return y;
     }
@@ -69,13 +57,13 @@ public class Dog {
     /* Call this is your isSelected method to tell you the bottom edge of the dog.
      * To find the height of the image, use "theNameOfYourPImageVariable.height
      */
-    private float bottomEdge(){
+    public float bottomEdge(){
         //TODO: return the location of the bottom edge of the dog  
         return x+img.height;
     }
 
     public void move(){
-        x =  (int)(Math.random()*screenWidth-img.width);
-        y =  (int)(Math.random()*screenHeight-img.height);
+        x =  mySketch.random(0,screenWidth-img.width);
+        y =  mySketch.random(0,screenHeight-img.height);
     }
 }

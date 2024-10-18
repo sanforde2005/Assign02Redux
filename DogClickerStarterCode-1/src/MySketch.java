@@ -42,13 +42,14 @@ public class MySketch extends PApplet {
         // TODO: call the dog object's method that figures out of the mouse was pressed on the dog object.
         float x = mouseX;
         float y = mouseY;
-        boolean onDog = dog.isSelected(x, y);
+  
 
         // Passing in the mouse's x and y position so it can do its job.
         // TODO: if the mouse if on the dog, move the dog. 
-        if (onDog){
+        if (mousePressed==true && x>=dog.leftEdge() && x<=dog.rightEdge() && y>=dog.topEdge() && y<=dog.bottomEdge());{
             dog.move();
         }
+
         // You might create a new dog object at a random location or move the current dog to a different location.
         // Note: when you update the dog object variable to reference a different object, Java
         // automatically gets rid of the old object. Isn't that nice of Java!   
